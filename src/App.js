@@ -29,8 +29,10 @@ export default class App extends Component {
   }
 
   runSimulation () {
+    clearInterval(this.state.timer)
     this.setState({
       packet_layer: 0,
+      time: 0,
       timer: setInterval(() => this.incrementTime(), 1000)
     })
   }
@@ -50,7 +52,7 @@ export default class App extends Component {
           layers={this.state.layers}
           time={this.state.time}
           delay={this.state.delay}
-          packet_layer={this.state.packet_layer}/>
+          packet_layer={this.state.packet_layer} />
       </div>
     )
   }

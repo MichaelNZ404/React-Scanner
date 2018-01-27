@@ -4,19 +4,12 @@ import './Firewall.css'
 import Layer from './Layer/Layer'
 
 export default class Firewall extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {
-  //     layers: props.layers
-  //   }
-  //   // TODO: add a new Layer component for layers passed through props
-  // }
-
   renderLayer (nodeCount, idx) {
     let hasPacket = this.props.packet_layer === idx
     return (
       <Layer
         key={idx}
+        index={idx}
         time={this.props.time}
         hasPacket={hasPacket}
         nodes={nodeCount}/>
