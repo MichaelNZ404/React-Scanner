@@ -1,0 +1,8 @@
+header: {
+  backgroundColor: 'skyblue';
+  padding: 15;
+},
+title: {
+  textAlign: 'center';
+  color: 'white';
+}

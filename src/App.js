@@ -1,36 +1,30 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
-import Title from './components/Title';
-import Firewall from './components/Firewall';
-import Timer from './components/Timer';
+import Firewall from './components/Firewall/Firewall'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    // this.incrementCount = this.incrementCount.bind(this);
-    // this.sliderInput = this.sliderInput.bind(this);
-    // this.restart = this.restart.bind(this);
-    // this.colorFill = this.colorFill.bind(this);
+export default class App extends Component {
+  constructor (props) {
+    super(props)
     this.state = {
-      title: 'Firewall Scanner',
-      firewall: {
-        0: 3,
-        1: 2,
-        4: 4,
-        6: 4,
-      }
+      layers: [5, 2, 3, 6, 2],
+      title: 'React Scanner'
+      // TODO: add a way for users to input the layer data
     }
+    document.title = this.state.title
   }
 
-  render() {
+  render () {
     return (
       <div className="App">
-        <Title>{this.state.title}</Title>
-        <Firewall />
+
+        <div className="header">
+          <div className="title">{this.state.title}</div>
+        </div>
+
+        <Firewall
+          layers={this.state.layers} />
       </div>
-    );
+    )
   }
 }
-
-export default App;

@@ -1,0 +1,7 @@
+.node{
+  height: 50px;
+  width: 50px;
+  background-color: #000;
+  float: left;
+  margin: 10px;
+}
