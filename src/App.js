@@ -9,7 +9,10 @@ export default class App extends Component {
     this.state = {
       layers: [5, 2, 3, 6, 2],
       title: 'React Scanner',
-      time: 0
+      time: 0,
+      delay: 0,
+      packet_layer: null,
+      timer: null
       // TODO: add a way for users to input the layer data
     }
     document.title = this.state.title
@@ -17,12 +20,19 @@ export default class App extends Component {
 
   incrementTime () {
     this.setState({
-      time: this.state.time + 1
+      time: this.state.time + 1,
+      packet_layer: this.state.packet_layer + 1
     })
+    if (this.state.packet_layer >= this.state.layers.length - 1) {
+      clearInterval(this.state.timer)
+    }
   }
 
   runSimulation () {
-    window.setInterval(() => this.incrementTime(), 1000)
+    this.setState({
+      packet_layer: 0,
+      timer: setInterval(() => this.incrementTime(), 1000)
+    })
   }
 
   render () {
@@ -38,7 +48,9 @@ export default class App extends Component {
 
         <Firewall
           layers={this.state.layers}
-          time={this.state.time}/>
+          time={this.state.time}
+          delay={this.state.delay}
+          packet_layer={this.state.packet_layer}/>
       </div>
     )
   }

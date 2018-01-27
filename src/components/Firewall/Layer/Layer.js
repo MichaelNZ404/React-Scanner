@@ -4,12 +4,15 @@ import './Layer.css'
 import Node from './Node/Node'
 
 export default class Layer extends Component {
-  renderNode (nodeidx, activeNode) {
+  renderNode (nodeidx, activeNode, hasPacket) {
     const isActive = nodeidx === activeNode
+    const showPacket = this.props.hasPacket && nodeidx === 0
     return (
       <Node
         key={nodeidx}
-        active={isActive}/>
+        active={isActive}
+        showPacket={showPacket}
+        onCollision={this.props.handleCollision}/>
     )
   }
 
