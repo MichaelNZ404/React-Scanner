@@ -8,10 +8,21 @@ export default class App extends Component {
     super(props)
     this.state = {
       layers: [5, 2, 3, 6, 2],
-      title: 'React Scanner'
+      title: 'React Scanner',
+      time: 0
       // TODO: add a way for users to input the layer data
     }
     document.title = this.state.title
+  }
+
+  incrementTime () {
+    this.setState({
+      time: this.state.time + 1
+    })
+  }
+
+  runSimulation () {
+    window.setInterval(() => this.incrementTime(), 1000)
   }
 
   render () {
@@ -20,10 +31,14 @@ export default class App extends Component {
 
         <div className="header">
           <div className="title">{this.state.title}</div>
+          <button
+            className='run-btn'
+            onClick={() => this.runSimulation()}>Run Simulation</button>
         </div>
 
         <Firewall
-          layers={this.state.layers} />
+          layers={this.state.layers}
+          time={this.state.time}/>
       </div>
     )
   }

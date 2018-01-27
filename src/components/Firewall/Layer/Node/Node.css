@@ -5,3 +5,7 @@
   float: left;
   margin: 10px;
 }
+
+.node.active{
+  background-color: #CCC;
+}

@@ -16,7 +16,7 @@ export default class Firewall extends Component {
     return (
       <Layer
         key={idx}
-        scanIndex={0}
+        time={this.props.time}
         nodes={nodeCount}/>
     )
   }
@@ -28,7 +28,8 @@ export default class Firewall extends Component {
     }
     return (
       <div>
-        Layers: {this.props.layers}
+        <p>Layers: {this.props.layers.join(', ')}</p>
+        <p>Time: {this.props.time}</p>
         {layerList}
       </div>
     )

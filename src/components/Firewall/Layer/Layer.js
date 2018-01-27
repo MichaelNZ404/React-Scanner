@@ -4,24 +4,20 @@ import './Layer.css'
 import Node from './Node/Node'
 
 export default class Layer extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      nodes: props.nodes
-    }
-    // TODO: add a new Layer component for layers passed through props
-  }
-
-  renderNode (i) {
+  renderNode (nodeidx, activeNode) {
+    const isActive = nodeidx === activeNode
     return (
-      <Node key={i}/>
+      <Node
+        key={nodeidx}
+        active={isActive}/>
     )
   }
 
   render () {
+    let activeNode = this.props.time % this.props.nodes
     let nodeList = []
     for (let i = 0; i < this.props.nodes; i++) {
-      nodeList.push(this.renderNode(i))
+      nodeList.push(this.renderNode(i, activeNode))
     }
     return (
       <div className='layer'>
