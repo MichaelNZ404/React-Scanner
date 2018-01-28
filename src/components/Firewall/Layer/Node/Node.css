@@ -15,26 +15,10 @@
   border: 4px red solid;
 }
 
-.node.active .line{
-  animation: scanner 1s;
-  width: 100%;
-  height: 3px;
-  background: tomato;
-}
-
 .node .contents{
   position: absolute;
 }
 
 .node.active.caught{
   color: Red;
-}
-
-@keyframes scanner {
-  0% {
-    margin-top: 0px;
-  }
-  100% {
-    margin-top: 100%;
-  }
 }

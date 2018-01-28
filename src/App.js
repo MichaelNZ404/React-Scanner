@@ -13,7 +13,7 @@ export default class App extends Component {
       delay: -1,
       packet_layer: -1,
       timer: null,
-      interval: 500,
+      interval: 125,
       packet_moved: false
       // TODO: add a way for users to input the layer data
     }
@@ -52,7 +52,7 @@ export default class App extends Component {
   onVictory () {
     clearInterval(this.state.timer)
     this.setState({
-      interval: 500
+      interval: 250
     })
     console.log('winner!')
   }

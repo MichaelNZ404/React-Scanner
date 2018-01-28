@@ -15,7 +15,6 @@ export default function Node (props) {
   return (
     <div className={nodeClass}>
       <div className='contents'>{nodeContents}</div>
-      <div className='line' />
     </div>
   )
 }
