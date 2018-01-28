@@ -4,11 +4,37 @@
   background-color: #000;
   float: left;
   clear:both;
-  margin: 10px;
-  color: red;
+  margin: 0px 10px;
+  color: green;
   font-size: 3em;
+  border: 4px green solid;
 }
 
 .node.active{
   background-color: #CCC;
+  border: 4px red solid;
+}
+
+.node.active .line{
+  animation: dude 1s 1 forwards;
+  width: 100%;
+  height: 3px;
+  background: tomato;
+}
+
+.node .contents{
+  position: absolute;
+}
+
+.node.active.caught{
+  color: Red;
+}
+
+@keyframes dude {
+  0% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 100%;
+  }
 }

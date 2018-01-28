@@ -9,11 +9,11 @@ export default class App extends Component {
     this.state = {
       layers: [3, 2, 0, 0, 4, 0, 4],
       title: 'React Scanner',
-      time: 0,
+      time: -1,
       delay: 0,
       packet_layer: -1,
       timer: null,
-      interval: 10,
+      interval: 500,
       packet_moved: false
       // TODO: add a way for users to input the layer data
     }
@@ -58,6 +58,7 @@ export default class App extends Component {
   }
 
   onCollision (layerIndex) {
+    // abrupt collisions, refactor this.
     console.log(`collision at ${layerIndex}`)
     clearInterval(this.state.timer)
     this.setState({
