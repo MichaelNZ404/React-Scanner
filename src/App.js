@@ -23,10 +23,12 @@ export default class App extends Component {
   movePacket () {
     if (this.state.time >= this.state.delay) {
       this.setState({
-        packet_layer: this.state.packet_layer + 1,
-        packet_moved: true
+        packet_layer: this.state.packet_layer + 1
       })
     }
+    this.setState({
+      packet_moved: true
+    })
   }
 
   incrementTime () {
@@ -50,18 +52,18 @@ export default class App extends Component {
   onVictory () {
     clearInterval(this.state.timer)
     this.setState({
-      interval: 1000
+      interval: 500
     })
     console.log('winner!')
   }
 
   onCollision (layerIndex) {
     console.log(`collision at ${layerIndex}`)
-    // clearInterval(this.state.timer)
-    // this.setState({
-    //   delay: this.state.delay + 1
-    // }) CANT CALL THIS IN RENDER!!!
-    // this.runSimulation()
+    clearInterval(this.state.timer)
+    this.setState({
+      delay: this.state.delay + 1
+    })
+    this.runSimulation()
   }
 
   runSimulation () {
@@ -69,7 +71,7 @@ export default class App extends Component {
     this.setState({
       packet_layer: -1,
       time: -1,
-      timer: setInterval(() => this.incrementTime(), this.state.interval)
+      timer: setInterval(() => this.nextStep(), this.state.interval)
     })
   }
 
@@ -82,7 +84,7 @@ export default class App extends Component {
           <div className="about">This is a visual representation of <a href="https://adventofcode.com/2017/day/13">Advent of Code Day 13</a></div>
           <button
             className='run-btn'
-            onClick={() => this.nextStep()}>Run Simulation</button>
+            onClick={() => this.runSimulation()}>Run Simulation</button>
         </div>
 
         <Firewall
