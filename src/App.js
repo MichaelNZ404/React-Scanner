@@ -10,7 +10,7 @@ export default class App extends Component {
       layers: [3, 2, 0, 0, 4, 0, 4],
       title: 'React Scanner',
       time: -1,
-      delay: 0,
+      delay: -1,
       packet_layer: -1,
       timer: null,
       interval: 500,
@@ -58,13 +58,9 @@ export default class App extends Component {
   }
 
   onCollision (layerIndex) {
-    // abrupt collisions, refactor this.
     console.log(`collision at ${layerIndex}`)
     clearInterval(this.state.timer)
-    this.setState({
-      delay: this.state.delay + 1
-    })
-    this.runSimulation()
+    setTimeout(() => this.runSimulation(), this.state.interval * 2)
   }
 
   runSimulation () {
@@ -72,6 +68,7 @@ export default class App extends Component {
     this.setState({
       packet_layer: -1,
       time: -1,
+      delay: this.state.delay + 1,
       timer: setInterval(() => this.nextStep(), this.state.interval)
     })
   }
