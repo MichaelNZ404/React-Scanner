@@ -24,7 +24,7 @@ export default class Firewall extends Component {
       layerList.push(this.renderLayer(this.props.layers[i], i))
     }
     return (
-      <div>
+      <div className='Firewall'>
         <p>Layers: {this.props.layers.join(', ')}</p>
         <p>Time: {this.props.time >= 0 ? this.props.time : 'Initializing'}</p>
         <p>Delay: {this.props.delay}</p>

@@ -1,5 +1,6 @@
 .layer{
-  clear:both;
+  float: left;
+  clear: right;
 }
 
 .blankLayer{

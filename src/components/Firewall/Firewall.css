@@ -1,8 +1,5 @@
-header: {
-  backgroundColor: 'skyblue';
-  padding: 15;
-},
-title: {
-  textAlign: 'center';
-  color: 'white';
+.Firewall{
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
 }

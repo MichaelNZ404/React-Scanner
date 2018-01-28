@@ -35,9 +35,9 @@ export default class Layer extends Component {
     }
     if (this.props.nodes === 0) {
       if (this.props.hasPacket) {
-        nodeList.push(<div className='blankLayer'>--P--</div>)
+        nodeList.push(<div key='0' className='blankLayer'>--P--</div>)
       } else {
-        nodeList.push(<div className='blankLayer'>-----</div>)
+        nodeList.push(<div key='0' className='blankLayer'>-----</div>)
       }
     }
     return (
