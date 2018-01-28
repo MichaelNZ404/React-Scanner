@@ -12,7 +12,8 @@ export default class Firewall extends Component {
         index={idx}
         time={this.props.time}
         hasPacket={hasPacket}
-        nodes={nodeCount}/>
+        nodes={nodeCount}
+        onCollision={this.props.onCollision}/>
     )
   }
 
@@ -26,7 +27,7 @@ export default class Firewall extends Component {
         <p>Layers: {this.props.layers.join(', ')}</p>
         <p>Time: {this.props.time}</p>
         <p>Delay: {this.props.delay}</p>
-        <p>Packet Position: {this.props.packet_layer}</p>
+        <p>Packet Position: {this.props.packet_layer >= 0 ? this.props.packet_layer : 'Waiting'}</p>
         {layerList}
       </div>
     )

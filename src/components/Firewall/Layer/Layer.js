@@ -8,14 +8,14 @@ export default class Layer extends Component {
     const isActive = nodeidx === activeNode
     const showPacket = this.props.hasPacket && nodeidx === 0
     if (showPacket && isActive) {
-      console.log(`Collision at ${this.props.index}`)
+      this.props.onCollision(this.props.index)
+      // console.log(`Collision at ${this.props.index}`)
     }
     return (
       <Node
         key={nodeidx}
         active={isActive}
-        showPacket={showPacket}
-        onCollision={this.props.handleCollision}/>
+        showPacket={showPacket}/>
     )
   }
 
