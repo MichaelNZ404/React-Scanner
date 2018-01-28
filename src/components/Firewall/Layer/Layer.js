@@ -25,6 +25,9 @@ export default class Layer extends Component {
     for (let i = 0; i < this.props.nodes; i++) {
       nodeList.push(this.renderNode(i, activeNode))
     }
+    if (this.props.nodes == 0) {
+      nodeList.push(<div className='blankLayer'>------</div>)
+    }
     return (
       <div className='layer'>
         {nodeList}

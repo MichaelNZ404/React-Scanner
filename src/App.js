@@ -7,28 +7,30 @@ export default class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      layers: [5, 2, 3, 7, 3],
+      layers: [3, 2, 0, 0, 4, 0, 4],
       title: 'React Scanner',
       time: 0,
       delay: 0,
       packet_layer: null,
       timer: null,
-      interval: 100
+      interval: 10
       // TODO: add a way for users to input the layer data
     }
     document.title = this.state.title
   }
 
   incrementTime () {
-    let state = {
-      time: this.state.time + 1
-    }
     if (this.state.time >= this.state.delay) {
-      state.packet_layer = this.state.packet_layer + 1
+      this.setState({
+        packet_layer: this.state.packet_layer + 1
+      })
     }
-    this.setState(state)
     if (this.state.packet_layer >= this.state.layers.length - 1) {
       this.onVictory()
+    } else {
+      this.setState({
+        time: this.state.time + 1
+      })
     }
   }
 
@@ -64,6 +66,7 @@ export default class App extends Component {
 
         <div className="header">
           <div className="title">{this.state.title}</div>
+          <div className="about">This is a visual representation of <a href="https://adventofcode.com/2017/day/13">Advent of Code Day 13</a></div>
           <button
             className='run-btn'
             onClick={() => this.runSimulation()}>Run Simulation</button>

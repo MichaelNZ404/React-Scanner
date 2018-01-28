@@ -4,7 +4,6 @@
 
 .header {
   background-color: #2779A7;
-  height: 50px;
   padding: 20px;
   color: white;
 }
@@ -15,4 +14,14 @@
 
 .run-btn{
   margin: 15px 0px;
+}
+
+.about{
+  padding: 5px;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.about a{
+  color: yellow;
 }

@@ -25,7 +25,7 @@ export default class Firewall extends Component {
     return (
       <div>
         <p>Layers: {this.props.layers.join(', ')}</p>
-        <p>Time: {this.props.time}</p>
+        <p>Time: {this.props.time >= 0 ? this.props.time : 'Initializing'}</p>
         <p>Delay: {this.props.delay}</p>
         <p>Packet Position: {this.props.packet_layer >= 0 ? this.props.packet_layer : 'Waiting'}</p>
         {layerList}
