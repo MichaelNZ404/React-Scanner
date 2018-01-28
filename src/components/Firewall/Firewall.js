@@ -13,6 +13,7 @@ export default class Firewall extends Component {
         time={this.props.time}
         hasPacket={hasPacket}
         nodes={nodeCount}
+        packet_moved={this.props.packet_moved}
         onCollision={this.props.onCollision}/>
     )
   }

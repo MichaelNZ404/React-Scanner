@@ -11,26 +11,39 @@ export default class App extends Component {
       title: 'React Scanner',
       time: 0,
       delay: 0,
-      packet_layer: null,
+      packet_layer: -1,
       timer: null,
-      interval: 10
+      interval: 10,
+      packet_moved: false
       // TODO: add a way for users to input the layer data
     }
     document.title = this.state.title
   }
 
-  incrementTime () {
+  movePacket () {
     if (this.state.time >= this.state.delay) {
       this.setState({
-        packet_layer: this.state.packet_layer + 1
+        packet_layer: this.state.packet_layer + 1,
+        packet_moved: true
       })
     }
-    if (this.state.packet_layer >= this.state.layers.length - 1) {
-      this.onVictory()
+  }
+
+  incrementTime () {
+    this.setState({
+      time: this.state.time + 1,
+      packet_moved: false
+    })
+  }
+
+  nextStep () {
+    if (!this.state.packet_moved) {
+      this.movePacket()
+      if (this.state.packet_layer >= this.state.layers.length - 1) {
+        this.onVictory()
+      }
     } else {
-      this.setState({
-        time: this.state.time + 1
-      })
+      this.incrementTime()
     }
   }
 
@@ -44,11 +57,11 @@ export default class App extends Component {
 
   onCollision (layerIndex) {
     console.log(`collision at ${layerIndex}`)
-    clearInterval(this.state.timer)
-    this.setState({
-      delay: this.state.delay + 1
-    })
-    this.runSimulation()
+    // clearInterval(this.state.timer)
+    // this.setState({
+    //   delay: this.state.delay + 1
+    // }) CANT CALL THIS IN RENDER!!!
+    // this.runSimulation()
   }
 
   runSimulation () {
@@ -69,7 +82,7 @@ export default class App extends Component {
           <div className="about">This is a visual representation of <a href="https://adventofcode.com/2017/day/13">Advent of Code Day 13</a></div>
           <button
             className='run-btn'
-            onClick={() => this.runSimulation()}>Run Simulation</button>
+            onClick={() => this.nextStep()}>Run Simulation</button>
         </div>
 
         <Firewall
@@ -77,6 +90,7 @@ export default class App extends Component {
           time={this.state.time}
           delay={this.state.delay}
           packet_layer={this.state.packet_layer}
+          packet_moved={this.state.packet_moved}
           onCollision={(layerIndex) => this.onCollision(layerIndex)}/>
       </div>
     )
