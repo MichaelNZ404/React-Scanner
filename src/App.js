@@ -85,6 +85,14 @@ export default class App extends Component {
     })
   }
 
+  modifyLayers (value) {
+    clearInterval(this.state.timer)
+    let layers = value.split(',').filter((x) => Number.isInteger(parseInt(x))).map((x) => parseInt(x))
+    this.setState({
+      layers: layers
+    })
+  }
+
   render () {
     return (
       <div className="App">
@@ -95,6 +103,10 @@ export default class App extends Component {
           <div className="slidecontainer">
             <div>Simulation Speed</div>
             <input type="range" defaultValue={250} min={25} max={500} onChange={(e) => this.modifyInterval(e.target.value)}/>
+          </div>
+          <div className="layercontainer">
+            <div>Layer definition</div>
+            <input defaultValue={this.state.layers} onChange={(e) => this.modifyLayers(e.target.value)}/>
           </div>
           <button
             className='run-btn'
