@@ -88,7 +88,12 @@ export default class App extends Component {
     clearInterval(this.state.timer)
     let layers = value.split(',').filter((x) => Number.isInteger(parseInt(x))).map((x) => parseInt(x))
     this.setState({
-      layers: layers
+      layers: layers,
+      delay: -1,
+      time: -1,
+      packet_layer: -1,
+      timer: null,
+      packet_moved: false
     })
   }
 
