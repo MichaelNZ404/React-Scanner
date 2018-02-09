@@ -15,7 +15,6 @@ export default class App extends Component {
       timer: null,
       interval: 250,
       packet_moved: false
-      // TODO: add a way for users to input the layer data
     }
     document.title = this.state.title
   }
