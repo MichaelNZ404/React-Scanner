@@ -13,8 +13,6 @@ export default function Node (props) {
     nodeClass += ' caught'
   } else if (props.showPacket) { nodeContents = 'P' }
   return (
-    <div className={nodeClass}>
-      <div className='contents'>{nodeContents}</div>
-    </div>
+    <div className={nodeClass}>{nodeContents}</div>
   )
 }

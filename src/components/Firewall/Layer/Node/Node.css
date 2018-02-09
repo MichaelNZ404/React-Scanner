@@ -8,15 +8,12 @@
   color: green;
   font-size: 3em;
   border: 4px green solid;
+  border-radius: 20px;
 }
 
 .node.active{
   background-color: #CCC;
   border: 4px red solid;
-}
-
-.node .contents{
-  position: absolute;
 }
 
 .node.active.caught{

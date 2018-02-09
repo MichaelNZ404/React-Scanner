@@ -13,7 +13,7 @@ export default class App extends Component {
       delay: -1,
       packet_layer: -1,
       timer: null,
-      interval: 125,
+      interval: 250,
       packet_moved: false
       // TODO: add a way for users to input the layer data
     }
@@ -52,7 +52,7 @@ export default class App extends Component {
   onVictory () {
     clearInterval(this.state.timer)
     this.setState({
-      interval: 250
+      timer: undefined
     })
     console.log('winner!')
   }
@@ -73,6 +73,18 @@ export default class App extends Component {
     })
   }
 
+  modifyInterval (value) {
+    clearInterval(this.state.timer)
+    let timer
+    if (this.state.timer) { // if simulation is already running, keep running
+      timer = setInterval(() => this.nextStep(), this.state.interval)
+    }
+    this.setState({
+      interval: value,
+      timer: timer
+    })
+  }
+
   render () {
     return (
       <div className="App">
@@ -80,6 +92,10 @@ export default class App extends Component {
         <div className="header">
           <div className="title">{this.state.title}</div>
           <div className="about">This is a visual representation of <a href="https://adventofcode.com/2017/day/13">Advent of Code Day 13</a></div>
+          <div className="slidecontainer">
+            <div>Simulation Speed</div>
+            <input type="range" defaultValue={250} min={25} max={500} onChange={(e) => this.modifyInterval(e.target.value)}/>
+          </div>
           <button
             className='run-btn'
             onClick={() => this.runSimulation()}>Run Simulation</button>
@@ -91,6 +107,7 @@ export default class App extends Component {
           delay={this.state.delay}
           packet_layer={this.state.packet_layer}
           packet_moved={this.state.packet_moved}
+          interval={this.state.interval}
           onCollision={(layerIndex) => this.onCollision(layerIndex)}/>
       </div>
     )
