@@ -1,14 +1,15 @@
+# React Scanner
 This is a visual representation of https://adventofcode.com/2017/day/13 build in react
 
 ![Screenshot](README.png)
 
 ### Usage
-Play with it online at: https://codepen.io/MichaelNZ404/pen/zjOmqp
+- Play with it online at: https://codepen.io/MichaelNZ404/pen/zjOmqp
 
 OR
 
-Run `npm install` and `npm start`
-visit `http://localhost:3000/`
+- Run `npm install` and `npm start`
+- Visit `http://localhost:3000/`
 
 ### Project Description
 You need to cross a vast firewall. The firewall consists of several layers, each with a security scanner that moves back and forth across the layer. To succeed, you must not be detected by a scanner.
